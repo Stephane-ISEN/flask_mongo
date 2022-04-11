@@ -39,6 +39,12 @@ def json_etudiant(id):
     return jsonify(etudiant), 200 
 ```
 
+Cette fonction récupère l'id de l'étudiant dans l'url, typé **int**, se connecte à la base, retrouve le document de l'étudiant, ferme la base et affiche les données sous forme JSON grâce à la fontion **jsonify**. Pour que tout marche bien, il faut importer cette dernière fonction à partir de Flask.
+
+Lorsque le code est en place, il est possible d'afficher le JSON dans le navigateur :
+
+![fiche JSON](/ressources/flaskmongo_json.png)
+
 ### la fonction get_etudiant()
 Fonction appelée par l'url `/etudiant/<id>`, lors du clique sur le nom d'un étudiant sur la page d'accueil.
 

@@ -34,7 +34,7 @@ Dans *app.py*, il faut ajouter la fonction add_etudiant() qui retourne la page *
 ### la fonction create_etudiant()
 Fonction appelée par l'url `/etudiant/create`, lors de la validation du formulaire de la page *inscription.html*.
 
-Les données arrivant par la **METHOD POST**, il faut le préciser dans le `@app.route()` et utiliser l'objet `request`pour récupérer les saisies du formulaire. vous pouvez vous inspirez de [la doc officiel](https://flask.palletsprojects.com/en/2.1.x/quickstart/#the-request-object) pour ça.
+Les données arrivant par la **METHOD POST**, il faut le préciser dans le `@app.route()` et utiliser l'objet `request`pour récupérer les saisies du formulaire. vous pouvez vous inspirez de [la doc officielle](https://flask.palletsprojects.com/en/2.1.x/quickstart/#the-request-object) pour ça.
 
 Lorsque toutes les données sont récupérées, il faut se connecter à la base, écrire en base (voir la fonction **set_etudiant()**) et se déconnecter grâce à la classe **DataAccess**.
 

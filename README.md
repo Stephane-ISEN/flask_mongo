@@ -59,9 +59,9 @@ dans le répertoire `\templates`, ajoutez la page *etudiant.html*, dont voici un
 
 La liste des étudiants, apparaissant sur cette page, est générée dynamiquement à partir de la liste de documents passé en paramètre par le **render_template()** de la fonction **index()**.
 
-Pour parcourir une liste en Python, il faut faire une boucle **FOR**. 
+Pour parcourir une liste en Python, il faut faire une boucle **FOR**. Elle est décrire dans [cette documentation](https://jinja.palletsprojects.com/en/3.1.x/templates/#for).
 
-Les liens seront complétez au fur et mesure des étapes suivantes.
+Les liens seront complétés au fur et mesure des étapes suivantes.
 
 Vous pouvez faire un peu de CSS si vous voulez améliorer le rendu de la page. Le fichier doit alors être placé dans le répertoire */static*.
 Pour que le style soit appliqué à la page, ajoutez la ligne suivante dans la balise **HEAD** : `<link rel="stylesheet" href="{{???}}">`

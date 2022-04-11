@@ -26,7 +26,7 @@ Si vous avez besoin de plus d'information sur les formulaires : [le site MDN](ht
 
 Vous pouvez faire un peu de CSS si vous voulez améliorer le rendu de la page.
 
-** Pensez à mettre à jour le lien vers l'inscription sur la page d'accueil !**
+**Pensez à mettre à jour le lien vers l'inscription sur la page d'accueil !**
 
 ### La fonction add_etudiant()
 Fonction appelée par l'url `/etudiant/inscription`.

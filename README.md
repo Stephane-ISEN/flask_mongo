@@ -11,8 +11,8 @@ Commencez par étoffer le projet pour qu'il ressemble à ça :
 ![Projet](/ressources/flaskmongo_projet.png)
 
 Pour mémoire : 
-- le répertoire *static* est destiné à recevoir les fichiers statiques comme le css, les iamges...
-- le répertoire *templates* est destiné à recevoir les fichiers HTML et
+- le répertoire */static* est destiné à recevoir les fichiers statiques comme le css, les iamges...
+- le répertoire */templates* est destiné à recevoir les fichiers HTML et
 - le fichier *app.py* contient le code du serveur web,
 - le fichier *data.py*, que vous avez déjà codé, contient la classe de connexion à MongoDB **DataAccess*,
 - le ficher *test.py*, n'est plus utile à partir de cette étape.
@@ -57,15 +57,17 @@ dans le répertoire `\templates`, ajoutez la page *etudiant.html*, dont voici un
 
 ![Accueil](/ressources/flaskmongo_index.png)
 
-Pour que la page s'affiche bien, il faut faire attention à :
-- lui passer une variable, `contenu`par exemple, qui contient le document JSON de l'étudiant,
-- insérer les données sur la page à partir de cette variable. En faisant, pour le prénom, par exemple : `{{contenu["prenom"]}}`,
-- ajouter un lien vers la fiche JSON : `<a href="{{url_for('json_etudiant', id=contenu['_id'])}}" id="json" target="_blank">format JSON</a>`,
-- rendre cliquable les noms des étudiants de la page d'accueil, en vous inspirant du code donné au-dessus,
-- et un lien vers la page d'accueil.
+La liste des étudiants, apparaissant sur cette page, est générée dynamiquement à partir de la liste de documents passé en paramètre par le **render_template()** de la fonction **index()**.
 
-Vous pouvez faire un peu de CSS si vous voulez améliorer le rendu de la page.
+Pour parcourir une liste en Python, il faut faire une boucle **FOR**. 
+
+Les liens seront complétez au fur et mesure des étapes suivantes.
+
+Vous pouvez faire un peu de CSS si vous voulez améliorer le rendu de la page. Le fichier doit alors être placé dans le répertoire */static*.
+Pour que le style soit appliqué à la page, ajoutez la ligne suivante dans la balise **HEAD** : `<link rel="stylesheet" href="{{???}}">`
+
+Il faut, évidement, écrire le bon code à la place des ???. [La doc officielle devrait vous aider](https://flask.palletsprojects.com/en/2.1.x/quickstart/#static-files).
 
 ## La suite
 
-Il ne reste plus qu'à [ajouter un formulaire](https://github.com/Stephane-ISEN/flask_mongo/tree/Etape06) au site web.
+Nous allons ajouter [la fiche des étudiants](https://github.com/Stephane-ISEN/flask_mongo/tree/Etape05) au site web.

@@ -2,13 +2,13 @@
 
 Ce petit exercice à pour but d'afficher sur des pages web, générées par Flask, des données issues d'une base MongoDB.
 
-## Etape 6 : Ajout d'un formulaire
+## Etape 6 : Ajout d'une fiche étudiante
 
-On va ajouter une dernière page, un formulaire d'inscription pour de nouveaux élèves.
+Le site va être compléter avec une fiche étudiante, qui présente les informations d'un étudiant, sous forme HTML et sous forme JSON.
 
 Il nous faut 2 nouvelles url : 
-- `/etudiant/inscription` : qui fait appel à la fonction **add_etudiant** qui affiche le formulaire,
-- `/etudiant/create`: qui fait appel à la fonction **create_etudiant** reçoit toutes les infos du formulaire, par une **METHOD POST**, les sauves en base et redirige vers la page d'accueil.
+- `/etudiant/<id>` : qui fait appel à la fonction **get_etudiant** qui affiche la fiche étudiante HTML, à partir d'un id,
+- `/etudiant/json/<id>`: qui fait appel à la fonction **json_etudiant** qui affiche la fiche étudiante JSON, à partir d'un id.
 
 ### la page inscription.html
 dans le répertoire `\templates`, ajoutez la page *inscription.html*, dont voici un exemple :

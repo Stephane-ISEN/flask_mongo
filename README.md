@@ -10,10 +10,10 @@ Il nous faut 2 nouvelles url :
 - `/etudiant/<id>` : qui fait appel à la fonction **get_etudiant** qui affiche la fiche étudiante HTML, à partir d'un id,
 - `/etudiant/json/<id>`: qui fait appel à la fonction **json_etudiant** qui affiche la fiche étudiante JSON, à partir d'un id.
 
-### la page inscription.html
-dans le répertoire `\templates`, ajoutez la page *inscription.html*, dont voici un exemple :
+### la page etudiant.html
+dans le répertoire `\templates`, ajoutez la page *etudiant.html*, dont voici un exemple :
 
-![page d'inscription](/ressources/flaskmongo_form.png)
+![Fiche d'un étudiant](/ressources/flaskmongo_fiche.png)
 
 Pour que le formulaire fonctionne bien, i lfaut faire attention à :
 - ajouter une url dans l'**ACTION** de la balise **FORM** et **POST** comme **METHOD** : `<form id="formulaire" action="{{url_for('create_etudiant')}}" method="post">`,

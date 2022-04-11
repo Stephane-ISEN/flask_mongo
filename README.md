@@ -2,15 +2,22 @@
 
 Ce petit exercice à pour but d'afficher sur des pages web, générées par Flask, des données issues d'une base MongoDB.
 
-## Etape 5 : Ajout d'une fiche étudiante
+## Etape 4 : Flask avec une page d'accueil
 
-Le site va être compléter avec une fiche étudiante, qui présente les informations d'un étudiant, sous forme HTML et sous forme JSON.
+La classe **DataAccess** étant en place, nous pouvons développer notre site web qui va afficher les données sous format HTML.
 
-Il nous faut 2 nouvelles url : 
-- `/etudiant/<id>` : qui fait appel à la fonction **get_etudiant** qui affiche la fiche étudiante HTML, à partir d'un id,
-- `/etudiant/json/<id>`: qui fait appel à la fonction **json_etudiant** qui affiche la fiche étudiante JSON, à partir d'un id.
+Commencez par étoffer le projet pour qu'il ressemble à ça : 
 
-### la page etudiant.html
+![Projet](/ressources/flaskmongo_projet.png)
+
+Pour mémoire : 
+- le répertoire *static* est destiné à recevoir les fichiers statiques comme le css, les iamges...
+- le répertoire *templates* est destiné à recevoir les fichiers HTML et
+- le fichier *app.py* contient le code du serveur web,
+- le fichier *data.py*, que vous avez déjà codé, contient la classe de connexion à MongoDB **DataAccess*,
+- le ficher *test.py*, n'est plus utile à partir de cette étape.
+
+### la page index.html
 dans le répertoire `\templates`, ajoutez la page *etudiant.html*, dont voici un exemple :
 
 ![Fiche d'un étudiant](/ressources/flaskmongo_fiche.png)

@@ -17,7 +17,7 @@ dans le répertoire `\templates`, ajoutez la page *inscription.html*, dont voici
 
 ![page d'inscription](/ressources/flaskmongo_form.png)
 
-Pour que le formulaire fonctionne bien, i lfaut faire attention à :
+Pour que le formulaire fonctionne bien, il faut faire attention à :
 - ajouter une url dans l'**ACTION** de la balise **FORM** et **POST** comme **METHOD** : `<form id="formulaire" action="{{url_for('create_etudiant')}}" method="post">`,
 - avoir un **BUTTON** de type **SUBMIT** : `<button id="bouton" type="submit">Inscrire</button>`,
 - ajouter un **INPUT** pour saisir le nom, qui doit absolument avoir un paramètre **NAME** : `<input type="text" id="nom" name="nom" placeholder="Nom" required autofocus>`,
@@ -34,7 +34,7 @@ Vous pouvez faire un peu de CSS si vous voulez améliorer le rendu de la page.
 ### La fonction add_etudiant()
 Fonction appelée par l'url `/etudiant/inscription`.
 
-Dans *app.py*, il faut ajouter la fonction add_etudiant() qui retourne la page *inscription.html*.
+Dans *app.py*, il faut ajouter la fonction **add_etudiant()** qui retourne la page *inscription.html*.
 
 
 ### la fonction create_etudiant()

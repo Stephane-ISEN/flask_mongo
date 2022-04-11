@@ -28,13 +28,16 @@ Vous pouvez faire un peu de CSS si vous voulez améliorer le rendu de la page.
 Fonction appelée par l'url `/etudiant/json/<id>`, lors du clique sur le lien *Format JSON*.
 
 Dans *app.py*, ajoutez la fonction suivante :
-```@app.route("/etudiant/json/<int:id>")
+
+```
+@app.route("/etudiant/json/<int:id>")
 def json_etudiant(id):
     da.connexion()
     etudiant = da.get_etudiant(id)
     da.deconnexion()
 
-    return jsonify(etudiant), 200```
+    return jsonify(etudiant), 200 
+```
 
 ### la fonction get_etudiant()
 Fonction appelée par l'url `/etudiant/<id>`, lors du clique sur le nom d'un étudiant sur la page d'accueil.

@@ -17,10 +17,45 @@ Pour mémoire :
 - le fichier *data.py*, que vous avez déjà codé, contient la classe de connexion à MongoDB **DataAccess*,
 - le ficher *test.py*, n'est plus utile à partir de cette étape.
 
+### le fichier app.py
+Voici la structure de votre fichier *app.py* :
+```
+from flask import Flask, render_template
+
+#création d'un serveur web Python
+app = Flask(__name__)
+
+#a compléter pour afficher la page d'accueil
+@app.route("/")
+def index():
+
+    return render_template()
+
+#démarre automatiquement le serveur
+if __name__ == "__main__" :
+    app.run(debug=True)
+```
+
+
+### La fonction index()
+Cette fonction doit aller lire en base Mongo les documents de tous les étudiants et afficher la page *index.html*.
+
+Il faut donc la compléter pour :
+- ouvrir la connexion à la base Mongo grâce à la classe **DataAccess**,
+- appeler la méthode **get_etudiants()** de la classe **DataAccess** et récupérer la liste des documents dans une variable,
+- fermer la connexion en utilisant encore la classe **DataAccess**,
+- compléter le **render_template()** pour retourner la page *index.html* et lui passer en paramètre la variable qui contient la liste des documents.
+
+[La documentation de Flask](https://flask.palletsprojects.com/en/2.1.x/quickstart/#rendering-templates) devrait vous aider pour ce dernier point.
+
+Pour l'utilisation de la classe **DataAccess**, inspirez-vous du fichier *test.py*.
+
+Inutile de démarrer le serveur tant qu'on a pas ajouter la page *index.html*.
+
 ### la page index.html
 dans le répertoire `\templates`, ajoutez la page *etudiant.html*, dont voici un exemple :
 
-![Fiche d'un étudiant](/ressources/flaskmongo_fiche.png)
+![Accueil](/ressources/flaskmongo_index.png)
 
 Pour que la page s'affiche bien, il faut faire attention à :
 - lui passer une variable, `contenu`par exemple, qui contient le document JSON de l'étudiant,
@@ -30,35 +65,6 @@ Pour que la page s'affiche bien, il faut faire attention à :
 - et un lien vers la page d'accueil.
 
 Vous pouvez faire un peu de CSS si vous voulez améliorer le rendu de la page.
-
-### La fonction json_etudiant()
-Fonction appelée par l'url `/etudiant/json/<id>`, lors du clique sur le lien *Format JSON*.
-
-Dans *app.py*, ajoutez la fonction suivante :
-
-```
-@app.route("/etudiant/json/<int:id>")
-def json_etudiant(id):
-    da.connexion()
-    etudiant = da.get_etudiant(id)
-    da.deconnexion()
-
-    return jsonify(etudiant), 200 
-```
-
-Cette fonction récupère l'id de l'étudiant dans l'url, typé **int**, se connecte à la base, retrouve le document de l'étudiant, ferme la base et affiche les données sous forme JSON grâce à la fontion **jsonify**. Pour que tout marche bien, il faut importer cette dernière fonction à partir de Flask.
-
-Lorsque le code est en place, il est possible d'afficher le JSON dans le navigateur :
-
-![fiche JSON](/ressources/flaskmongo_json.png)
-
-### la fonction get_etudiant()
-Fonction appelée par l'url `/etudiant/<id>`, lors du clique sur le nom d'un étudiant de la page d'accueil.
-
-En vous inspirant du code de **json_etudiant()** codez la fonction **get_etudiant**, dans *app.py*. Cette fonction : 
-- récupère l'id de l'étudiant dans l'url,
-- se connecte à la base de donnée pour trouver le document correspondant à l'id,
-- retourne la page *etudiant.html* et lui passe le document en paramètre.
 
 ## La suite
 

@@ -15,19 +15,17 @@ dans le répertoire `\templates`, ajoutez la page *etudiant.html*, dont voici un
 
 ![Fiche d'un étudiant](/ressources/flaskmongo_fiche.png)
 
-Pour que le formulaire fonctionne bien, i lfaut faire attention à :
-- ajouter une url dans l'**ACTION** de la balise **FORM** et **POST** comme **METHOD** : `<form id="formulaire" action="{{url_for('create_etudiant')}}" method="post">`,
-- avoir un **BUTTON** de type **SUBMIT** : `<button id="bouton" type="submit">Inscrire</button>`,
-- ajouter un **INPUT** pour saisir le nom, qui doit absolument avoir un paramètre **NAME** : `<input type="text" id="nom" name="nom" placeholder="Nom" required autofocus>`,
-- faire de même pour les champ *prénom*, *classe* et *âge*,
+Pour que la page s'affiche bien, il faut faire attention à :
+- lui passer une variable, `contenu`par exemple, qui contient le document JSON de l'étudiant,
+- insérer les données sur la page à partir de cette variable. En faisant, pour le prénom, par exemple : `{{contenu["prenom"]}}`,
+- ajouter un lien vers la fiche JSON : `<a href="{{url_for('json_etudiant', id=contenu['_id'])}}" id="json" target="_blank">format JSON</a>`,
+- rendre cliquable les noms des étudiants de la page d'accueil, en vous inspirant du code donné au-dessus,
 - et un lien vers la page d'accueil.
-
-Si vous avez besoin de plus d'information sur les formulaires : [le site MDN](https://developer.mozilla.org/fr/docs/Web/HTML/Element/Form).
 
 Vous pouvez faire un peu de CSS si vous voulez améliorer le rendu de la page.
 
-### La fonction add_etudiant()
-Fonction appelée par l'url `/etudiant/inscription`.
+### La fonction get_etudiant()
+Fonction appelée par l'url `/etudiant/<id>`.
 
 Dans *app.py*, il faut ajouter la fonction add_etudiant() qui retourne la page *inscription.html*.
 

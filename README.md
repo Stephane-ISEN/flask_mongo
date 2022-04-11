@@ -46,14 +46,13 @@ Lorsque le code est en place, il est possible d'afficher le JSON dans le navigat
 ![fiche JSON](/ressources/flaskmongo_json.png)
 
 ### la fonction get_etudiant()
-Fonction appelée par l'url `/etudiant/<id>`, lors du clique sur le nom d'un étudiant sur la page d'accueil.
+Fonction appelée par l'url `/etudiant/<id>`, lors du clique sur le nom d'un étudiant de la page d'accueil.
 
-Les données arrivant par la **METHOD POST**, il faut le préciser dans le `@app.route()` et utiliser l'objet `request`pour récupérer les saisies du formulaire. vous pouvez vous inspirez de [la doc officielle](https://flask.palletsprojects.com/en/2.1.x/quickstart/#the-request-object) pour ça.
+En vous inspirant du code de **json_etudiant()** codez la fonction **get_etudiant**, dans *app.py*. Cette fonction : 
+- récupère l'id de l'étudiant dans l'url,
+- se connecte à la base de donnée pour trouver le document correspondant à l'id,
+- retourne la page *etudiant.html* et lui passe le document en paramètre.
 
-Lorsque toutes les données sont récupérées, il faut se connecter à la base, écrire en base (voir la fonction **set_etudiant()**) et se déconnecter grâce à la classe **DataAccess**.
+## La suite
 
-Puis faire une redirection vers la page d'accueil en vous inspirant de [la doc de **redirect()**](https://flask.palletsprojects.com/en/2.1.x/quickstart/#redirects-and-errors).
-
-## Les différentes étapes
-
-Etape 6 : Ajout d'un formulaire
+Il ne reste plus qu'à (ajouter un formulaire)[] au site web.

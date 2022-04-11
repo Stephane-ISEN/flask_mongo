@@ -24,13 +24,20 @@ Pour que la page s'affiche bien, il faut faire attention à :
 
 Vous pouvez faire un peu de CSS si vous voulez améliorer le rendu de la page.
 
-### La fonction get_etudiant()
-Fonction appelée par l'url `/etudiant/<id>`.
+### La fonction json_etudiant()
+Fonction appelée par l'url `/etudiant/json/<id>`, lors du clique sur le lien *Format JSON*.
 
-Dans *app.py*, il faut ajouter la fonction add_etudiant() qui retourne la page *inscription.html*.
+Dans *app.py*, ajoutez la fonction suivante :
+```@app.route("/etudiant/json/<int:id>")
+def json_etudiant(id):
+    da.connexion()
+    etudiant = da.get_etudiant(id)
+    da.deconnexion()
 
-### la fonction create_etudiant()
-Fonction appelée par l'url `/etudiant/create`, lors de la validation du formulaire de la page *inscription.html*.
+    return jsonify(etudiant), 200```
+
+### la fonction get_etudiant()
+Fonction appelée par l'url `/etudiant/<id>`, lors du clique sur le nom d'un étudiant sur la page d'accueil.
 
 Les données arrivant par la **METHOD POST**, il faut le préciser dans le `@app.route()` et utiliser l'objet `request`pour récupérer les saisies du formulaire. vous pouvez vous inspirez de [la doc officielle](https://flask.palletsprojects.com/en/2.1.x/quickstart/#the-request-object) pour ça.
 

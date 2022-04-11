@@ -2,7 +2,7 @@
 
 Ce petit exercice à pour but d'afficher sur des pages web, générées par Flask, des données issues d'une base MongoDB.
 
-## Etape 6 : Ajout d'une fiche étudiante
+## Etape 5 : Ajout d'une fiche étudiante
 
 Le site va être compléter avec une fiche étudiante, qui présente les informations d'un étudiant, sous forme HTML et sous forme JSON.
 

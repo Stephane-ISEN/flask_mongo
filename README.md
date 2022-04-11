@@ -46,6 +46,7 @@ Lorsque toutes les données sont récupérées, il faut se connecter à la base,
 
 Puis faire une redirection vers la page d'accueil en vous inspirant de [la doc de **redirect()**](https://flask.palletsprojects.com/en/2.1.x/quickstart/#redirects-and-errors).
 
+**request**, **redirect**, **url_for**, doivent être importés depuis Flask.
 
 ## Les différentes étapes
 

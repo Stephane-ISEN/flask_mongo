@@ -13,7 +13,7 @@ Il nous faut 2 nouvelles url :
 ### la page inscription.html
 dans le répertoire `\templates`, ajoutez la page *inscription.html*, dont voici un exemple :
 
-
+![page d'inscription](/ressources/flaskmongo_form.png)
 
 Pour que le formulaire fonctionne bien, i lfaut faire attention à :
 - ajouter une url dans l'**ACTION** de la balise **FORM** et **POST** comme **METHOD** : `<form id="formulaire" action="{{url_for('create_etudiant')}}" method="post">`,

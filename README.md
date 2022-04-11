@@ -2,7 +2,7 @@
 
 Ce petit exercice à pour but d'afficher sur des pages web, générées par Flask, des données issues d'une base MongoDB.
 
-## La base de données
+## Etape 6 : Ajout d'un formulaire
 La base MongoDB utilisée pour cet exercice est dans un conteneur qui a les caractéristiques suivant :
 - Utilisateur : root
 - Mot de passe : pass12345

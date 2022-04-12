@@ -2,55 +2,66 @@
 
 Ce petit exercice à pour but d'afficher sur des pages web, générées par Flask, des données issues d'une base MongoDB.
 
-## Etape 3 : des méthodes pour manipuler MongoDB
+## Etape 2 : une classe pour se connecter à MongoDB
+nous allons commencer à mettre en place le code Python pour travailler avec MongoDB. Pour ça, dans un nouveau projet, créons 2 fichiers :
+- *data.py* : qui va contenir une classe pour se connecter à MongoDB,
+- *test.py* : code test de la classe.
 
-La classe **DataAccess** étant en place, nous pouvons la compléter avec de nouvelles méthodes :
-- **get_etudiants()** : qui retourne la liste complètes des étudiants, sous la forme d'une liste de documents JSON.
-- **get_etudiant()** : qui prend en paramètre un id et retourne le document JSON de l'étudiant correspondant.
-- **set_etudiant()** : qui prend en paramètre les données d'un étudiant pour créer un document JSON dans la base MongoDB.
+### la classe DataAccess
+dans le fichier *data.py*, créez une classe de nom **DataAccess**. 
 
-Toutes ces méthodes sont des méthodes de classe.
-
-### la méthode set_étudiant
-Elle permet de créer un nouveau document *etudiant* dans la base MongoDB.
-Voici le bébut de la fonction, que vous pouvez recopier :
+Commencez par déclarer les variables de classe suivantes : 
+```    
+    user = "root"
+    mdp = "pass12345"
+    serveur = "127.0.0.1"
+    port = "27018"
+    db_name = "ecole"
+    collection_name = "etudiants"
 ```
+
+Comme vous pouvez le voir, ce sont les paramètres de connection. Pensez à les personnaliser, suivant votre base.
+
+Nous allons maintenant ajouter une méthode qui va permettre la connexion à la base MongoDB. Puisqu'on a besoin que d'une seule connexion dans le programme, on ne créera pas d'instance d'objet. Il est plus simple de passer par une méthode de classe, déclarée par le décorateur `@classmethod`. Il faut aussi penser à passer la classe en paramètre, grâce à la variable `cls`.
+
+Voici la méthode de classe **connexion()** :
+```
+    # méthode de classe
     @classmethod
-    def set_etudiant(cls, nom, prenom, age, classe):
-        #récupère la taille de la liste de documents pour les compter à partir de 1
-        taille = cls.etudiants.count_documents({})
-        taille = taille+1
+    def connexion(cls) :
+        #connexion à la base mongo
+        cls.client = MongoClient(f"mongodb://{cls.user}:{cls.mdp}@{cls.serveur}:{cls.port}")
+
+        # variable de classe qui représente la BDD
+        cls.db = cls.client[cls.db_name]
+        # variable de classe qui représente la collection
+        cls.etudiants = cls.db[cls.collection_name]
 ```
 
-Il faut, ensuite, ajouter une variable qui contient un dictionnaire Python. La structure du dictionnaire étant la même que le JSON, ça permet de créer des documents facilement dans le code : `etudiant = {"_id":taille,...}`
+Sur la même idée, vous pouvez ajouter une méthode de classe pour la déconnexion :
+```
+    # méthode de classe
+    @classmethod
+    def deconnexion(cls) :
+        #il suffit de fermer le client
+        cls.client.close()
+```
 
-Ici, on force l'**_id** pour les numérotes à partir de 1. Ainsi, le premier *etudiant* à l'**_id** 1, le deuxième l'**_id** 2 et ainsi de suite.
-Vous devez, évidement, remplacer les 3 ... par le code qu'il faut pour créer un document complet à partir des paramètres de la méthode.
+### le fichier test.py
 
-La dernière ligne que vous allez écrire, pour ajouter le document en base, va utiliser la méthode [insert_one()](https://pymongo.readthedocs.io/en/stable/api/pymongo/collection.html#pymongo.collection.Collection.insert_one). Consultez la documentation pour voir comment elle fonctionne. Pour l'appel de la collection, qui est une variable de classe, inspirez vous de ce qui a été fait au-dessus dans la fonction : `cls.etudiants.count_documents({})`.
+Il ne reste plus qu'à tester la connexion en écrivant un petit code dans *test.py*.
+```
+from data import DataAccess as da
 
-### la méthode get_etudiants
-Cette fonction retourne donc la liste complète des étudiants, lue en base MongoDB, sous forme de document JSON.
+# méthodes de classe, pas besoin de créer d'objet
+da.connexion()
 
-Créez une variable, `etudiant`par exemple, qui va contenir la liste lue en base grâce à la méthode [find()](https://pymongo.readthedocs.io/en/stable/api/pymongo/collection.html#pymongo.collection.Collection.find). Pour trouver tous les documents, vous pouvez passer en argument un dictionnaire vide **{}**. Rappelez vous que la collection est une variable de classe.
+da.deconnexion()
+# s'il n'y a pas de message d'erreur dans la console c'est que la connexion est ok
+```
 
-Pour le retour de la fonction, utilisez le code suivant : `return list(etudiants)`.
-
-### la méthode get_etudiant
-Cette fonction retourne le document d'un seul étudiant, sous forme JSON, trouvé à partir de son **_id**.
-
-Pour ce faire, vous pouvez passer par la méthode [find_one()](https://api.mongodb.com/python/3.3.1/tutorial.html#getting-a-single-document-with-find-one).
-
-### Tester les méthodes
-Pour tester vos nouvelles méthodes, appelez les dans le fichier *test.py*. Vous pouvez, par exemple : 
-- ajouter un nouvel étudiant avec la méthode **set_etudiant**,
-- afficher la liste de tous les étudiants avec **get_etudiant**,
-- aficher l'étudiant ayant 1 pour **_id** .
-
-Pensez à vous connecter et vous déconnecter de la base, avant et après toutes ces méthodes.
-
-Vous pouvez utiliser la méthode **pprint** (pour pretty print) de la manière suivante : `pprint.pprint(da.get_etudiants())`. Dans ce cas, pensez à importer la bibliothèque correspondante.
+Comme écrit dans le code, s'il n'y a pas de message d'erreur dans la console, c'est que la connexion est bonne.
 
 ## La suite
 
-Maintenant que la classe **DataAccess** fonctionne comme voulu, [nous allons l'utiliser pour un site web](https://github.com/Stephane-ISEN/flask_mongo/tree/Etape04).
+Il faut enrichir la classe **DataAccess** [avec des méthodes pour requêter la base MongoDB](https://github.com/Stephane-ISEN/flask_mongo/tree/Etape03).

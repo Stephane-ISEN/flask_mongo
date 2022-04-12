@@ -11,5 +11,10 @@ La base MongoDB utilisée pour cet exercice est dans un conteneur qui a les cara
 Pensez donc à lancer le conteneur avant de commencer le travail.
 
 ## Les différentes étapes
+- [Etape 1 : préparer une base MongoDB](https://github.com/Stephane-ISEN/flask_mongo/tree/Etape01)
+- [Etape 1 : préparer une base MongoDB](https://github.com/Stephane-ISEN/flask_mongo/tree/Etape01)
+- [Etape 1 : préparer une base MongoDB](https://github.com/Stephane-ISEN/flask_mongo/tree/Etape01)
+- [Etape 1 : préparer une base MongoDB](https://github.com/Stephane-ISEN/flask_mongo/tree/Etape01)
+- [Etape 1 : préparer une base MongoDB](https://github.com/Stephane-ISEN/flask_mongo/tree/Etape01)
+- [Etape 1 : préparer une base MongoDB](https://github.com/Stephane-ISEN/flask_mongo/tree/Etape01)
 
-Etape 6 : Ajout d'un formulaire

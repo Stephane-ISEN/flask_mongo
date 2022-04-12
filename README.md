@@ -27,6 +27,19 @@ Il faut, ensuite, ajouter une variable qui contient un dictionnaire Python. La s
 Ici, on force l'**_id** pour les numérotes à partir de 1. Ainsi, le premier *etudiant* à l'**_id** 1, le deuxième l'**_id** 2 et ainsi de suite.
 Vous devez, évidement, remplacer les 3 ... par le code qu'il faut pour créer un document complet à partir des paramètres de la méthode.
 
+La dernière ligne que vous allez écrire, pour ajouter le document en base, va utiliser la méthode [insert_one()](https://pymongo.readthedocs.io/en/stable/api/pymongo/collection.html#pymongo.collection.Collection.insert_one). Consultez la documentation pour voir comment elle fonctionne. Pour l'appel de la collection, qui est une variable de classe, inspirez vous de ce qui a été fait au-dessus dans la fonction : `cls.etudiants.count_documents({})`.
+
+### la méthode get_étudiants
+Cette fonction retourne donc la liste complète des étudiants, lue en base MongoDB, sous forme de document JSON.
+
+Créez une variable, `etudiant`par exemple, qui va contenir la liste lue en base grâce à la méthode [find()](https://pymongo.readthedocs.io/en/stable/api/pymongo/collection.html#pymongo.collection.Collection.find). Pour trouver tous les documents, vous pouvez passer en argument un dictionnaire vide **{}**. Rappelez vous que la collection est une variable de classe.
+
+Pour le retour de la fonction, utilisez le code suivant : `return list(etudiants)`.
+
+
+
+
+
 Commencez par étoffer le projet pour qu'il ressemble à ça : 
 
 ![Projet](/ressources/flaskmongo_projet.png)

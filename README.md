@@ -2,7 +2,7 @@
 
 Ce petit exercice à pour but d'afficher sur des pages web, générées par Flask, des données issues d'une base MongoDB.
 
-## Etape 2 : une classe pour se connecter à MongoDB
+## Etape 1 : préparer la base MongoDB
 nous allons commencer à mettre en place le code Python pour travailler avec MongoDB. Pour ça, dans un nouveau projet, créons 2 fichiers :
 - *data.py* : qui va contenir une classe pour se connecter à MongoDB,
 - *test.py* : code test de la classe.

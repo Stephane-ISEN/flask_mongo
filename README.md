@@ -50,4 +50,4 @@ Puis faire une redirection vers la page d'accueil en vous inspirant de [la doc d
 
 ## Les différentes étapes
 
-Etape 6 : Ajout d'un formulaire
+Etape 7 : Dockeriser toute l'appli
